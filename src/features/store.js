@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import PostReducer from "./Slice/PostSlice"
-import UserSlice from './Slice/UserSlice'
-
+import DriverSlice from "./Slice/DriverSlice"
+import RiderSlice from './Slice/RiderSlice'
+import SearchLocationsSlice from "./Slice/SearchLocationsSlice";
 
 
 export const store = configureStore({
      reducer: {
-          Posts: PostReducer,
-          Users: UserSlice,
+          Driver: DriverSlice,
+          Rider: RiderSlice,
+          SearchLocations: SearchLocationsSlice,
+
      }
 });

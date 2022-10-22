@@ -1,5 +1,17 @@
 import axios from "axios";
 
-export default axios.create({
+const DriverBasicURL = axios.create({
      baseURL: "https://jsonplaceholder.typicode.com"
 });
+
+const RiderBasicURL = axios.create({
+     baseURL: "https://jsonplaceholder.typicode.com"
+});
+
+const SerchLocationURL = "https://nominatim.openstreetmap.org/search?"
+
+export {
+     DriverBasicURL,
+     RiderBasicURL,
+     SerchLocationURL
+}
