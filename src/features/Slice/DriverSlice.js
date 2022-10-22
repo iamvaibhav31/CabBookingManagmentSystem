@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts, addNewPosts, editPosts, deletePosts } from "../Apis/Driver/PostRequest";
+// import { fetchPosts, addNewPosts, editPosts, deletePosts } from "../Apis/Driver/DriverRequest";
 
 
 const initialState = {
@@ -31,70 +31,70 @@ const DriverSlice = createSlice({
 
 
      },
-     extraReducers(builder) {
-          builder
-               .addCase(fetchPosts.pending, (state, action) => {
-                    state.status = "loading"
-               })
-               .addCase(fetchPosts.fulfilled, (state, action) => {
-                    state.status = "successful"
+     // extraReducers(builder) {
+     //      builder
+     //           .addCase(fetchPosts.pending, (state, action) => {
+     //                state.status = "loading"
+     //           })
+     //           .addCase(fetchPosts.fulfilled, (state, action) => {
+     //                state.status = "successful"
 
-                    const loadedpost = action.payload.map(p => {
-                         p.reaction = {
-                              thumbsup: 0,
-                              coffee: 0,
-                              wow: 0,
-                              hearts: 0,
-                              rocket: 0
-                         }
-                         return p
-                    })
+     //                const loadedpost = action.payload.map(p => {
+     //                     p.reaction = {
+     //                          thumbsup: 0,
+     //                          coffee: 0,
+     //                          wow: 0,
+     //                          hearts: 0,
+     //                          rocket: 0
+     //                     }
+     //                     return p
+     //                })
 
-                    state.posts = state.posts.concat(loadedpost)
-               })
-               .addCase(fetchPosts.rejected, (state, action) => {
-                    state.status = "failed"
-                    state.error = action.error.message
-               })
-               .addCase(addNewPosts.fulfilled, (state, action) => {
-
-
-                    action.payload.userId = Number(action.payload.userId)
-                    action.payload.reactions = {
-                         thumbsup: 0,
-                         coffee: 0,
-                         wow: 0,
-                         hearts: 0,
-                         rocket: 0
-                    }
-
-                    state.posts.push(action.payload)
-               })
-
-               .addCase(editPosts.fulfilled, (state, action) => {
-                    if (!action.payload?.id) {
-                         console.log("update could not complete", action.payload)
-                         return
-                    }
-
-                    const { id } = action.payload
-                    const posts = state.posts.filter(post => post.id !== id)
-                    state.posts = [...posts, action.payload]
-               })
-
-               .addCase(deletePosts.fulfilled, (state, action) => {
-                    if (!action.payload?.id) {
-                         console.log("Delete could not complete", action.payload)
-                         return
-                    }
-
-                    const { id } = action.payload
-                    const posts = state.posts.filter(post => post.id !== id)
-                    state.posts = posts
-               })
+     //                state.posts = state.posts.concat(loadedpost)
+     //           })
+     //           .addCase(fetchPosts.rejected, (state, action) => {
+     //                state.status = "failed"
+     //                state.error = action.error.message
+     //           })
+     //           .addCase(addNewPosts.fulfilled, (state, action) => {
 
 
-     }
+     //                action.payload.userId = Number(action.payload.userId)
+     //                action.payload.reactions = {
+     //                     thumbsup: 0,
+     //                     coffee: 0,
+     //                     wow: 0,
+     //                     hearts: 0,
+     //                     rocket: 0
+     //                }
+
+     //                state.posts.push(action.payload)
+     //           })
+
+     //           .addCase(editPosts.fulfilled, (state, action) => {
+     //                if (!action.payload?.id) {
+     //                     console.log("update could not complete", action.payload)
+     //                     return
+     //                }
+
+     //                const { id } = action.payload
+     //                const posts = state.posts.filter(post => post.id !== id)
+     //                state.posts = [...posts, action.payload]
+     //           })
+
+     //           .addCase(deletePosts.fulfilled, (state, action) => {
+     //                if (!action.payload?.id) {
+     //                     console.log("Delete could not complete", action.payload)
+     //                     return
+     //                }
+
+     //                const { id } = action.payload
+     //                const posts = state.posts.filter(post => post.id !== id)
+     //                state.posts = posts
+     //           })
+
+
+     // }
 })
 
 

@@ -32,4 +32,6 @@ const RiderSlice = createSlice({
 })
 
 export const selectAlllocation = state => state.SearchLocations.locationlist
+export const getstatus = state => state.SearchLocations.status
+export const geterror = state => state.SearchLocations.error
 export default RiderSlice.reducer;

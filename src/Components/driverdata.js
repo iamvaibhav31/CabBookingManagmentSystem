@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-const Driverdata = () => {
+import Searchlocation from "./searchlocation";
+const Driverdata = ({ }) => {
 
 
      return (
@@ -11,12 +11,7 @@ const Driverdata = () => {
                </div>
                <div class="col-12 mb-2 ">
                     <label for="currentaddress" class="form-label">Current Address:-</label>
-                    <form class="row ">
-                         <div class="col-8">
-                              <input type="text" class="form-control" placeholder="City" aria-label="City" />
-                         </div>
-                         <button type="submit" class="btn btn-primary col-3"> Search</button>
-                    </form>
+                    <Searchlocation />
                </div>
 
                <button type="submit" class="btn btn-primary w-100"> Resgister</button>
